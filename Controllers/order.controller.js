@@ -1,17 +1,17 @@
-const carModel = require('../Data Access Objects/car.dao');
+const orderModel = require('../Data Access Objects/order.dao');
 
-exports.createCar = (request, response, next) => {
+exports.createOrder = (request, response, next) => {
     try {
-        const car = request.body.car;
+        const order = request.body.order;
     
-        carModel.create(car, (err, car) => {
+        orderModel.create(order, (err, order) => {
             if (err) {
                 response.json({
                     error: err
                 });
             } else {
                 response.json({
-                    message: "Car created successfully"
+                    message: "Order created successfully"
                 });
             }
         });
@@ -22,16 +22,16 @@ exports.createCar = (request, response, next) => {
     }
 }
 
-exports.getCars = (request, response, next) => {
+exports.getOrders = (request, response, next) => {
     try {
-        carModel.read({}, (err, cars) => {
+        orderModel.read({}, (err, orders) => {
             if (err) {
                 response.json({
                     error: err
                 });
             } else {
                 response.json({
-                    cars: cars
+                    orders: orders
                 });
             }
         });
@@ -42,16 +42,16 @@ exports.getCars = (request, response, next) => {
     }
 }
 
-exports.getCar = (request, response, next) => {
+exports.getOrders = (request, response, next) => {
     try {
-        carModel.read({name: request.params.id}, (err, car) => {
+        orderModel.read({name: request.params.id}, (err, order) => {
             if (err) {
                 response.json({
                     error: err
                 });
             } else {
                 response.json({
-                    car: car
+                    order: order
                 });
             }
         });
@@ -62,18 +62,18 @@ exports.getCar = (request, response, next) => {
     }
 }
 
-exports.updateCar = (request, response, next) => {
+exports.updateOrder = (request, response, next) => {
     try {
-        const car = request.body.car;
+        const order = request.body.order;
     
-        carModel.update({_id: request.params.id}, car, (err, car) => {
+        orderModel.update({_id: request.params.id}, order, (err, order) => {
             if (err) {
                 response.json({
                     error: err
                 });
             } else {
                 response.json({
-                    message: "Car updated successfully"
+                    message: "Order updated successfully"
                 });
             }
         });
@@ -84,17 +84,17 @@ exports.updateCar = (request, response, next) => {
     }
 }
 
-exports.removeCar = (request, response, next) => {
+exports.removeOrder = (request, response, next) => {
     try {
-        carModel.delete({_id: request.params.id}, (err, car) => {
+        orderModel.delete({_id: request.params.id}, (err, order) => {
             if (err) {
                 response.json({
                     error: err
                 });
             } else {
                 response.json({
-                    message: "Car deleted successfully",
-                    car: car
+                    message: "Order deleted successfully",
+                    order: order
                 });
             }
         });
