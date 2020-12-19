@@ -9,6 +9,12 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.get('', (req, res) => {
+    res.json({
+        message: 'Connected'
+    });
+});
+
 var router = express.Router();
 app.use('/car', router);
 require('./Routes/car.routes')(router);
