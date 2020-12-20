@@ -10,6 +10,11 @@ const orderSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    days: {
+        type: Number,
+        min: 1,
+        required: true
+    },
     carId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Car',
